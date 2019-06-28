@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        // 4.新增一个footer组件 
+        const {Component}=React;
+        function Footel(props = {}){
+            return (
+                React.createElement('li',null,props.text)
+            )
+        }
+        class Footer extends Component{
+            constructor(props){
+                super(props)
+            }
+            render(){
+                return (
+                    // *在React里,如果是在标签里写js,必须用{}包起来
+                    <React.Fragment>
+                        {
+                            // this.props.children是隐式渲染子元素
+                        }
+                        {
+                            // *显示渲染子元素--React.Children是顶层API
+                            React.Children.map(this.props.children, (item,index)=>{
+                                if (index === 1) {
+                                    return item;
+                                }
+                            })
+                        }
+                    </React.Fragment>
+                )
+            }
+        }
+        ReactDOM.render(
+        // *在react里凡是单标签,都必须加结束符
+        <Footer>
+            <Footel text='我是第一个子元素'/>
+            <Footel text='我是第二个子元素'/>
+            <Footel text='我是第三个子元素'/>
+        </Footer>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

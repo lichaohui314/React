@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 头部 */
+        .header {
+            color: #FFFFFF;
+            border: 1px solid red;
+            text-align: center;
+            background: blue
+        }
+
+        /* 中间样式 */
+        .main {
+            border: 1px solid red;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        // 1.头部组件
+        function Header(params) {
+            return (
+                React.createElement('header',{className:'header'},'这是头部')
+            )
+        }
+        // 2.内容样式容器
+        class Main extends React.Component{
+            // *constructor  &   super  是es6 class自带的
+            constructor(props){
+                super(props)
+            }
+            // render方法是react封装的
+            render(){
+                return React.createElement('main',{className:'main'},'中间展示区')
+            }
+        }
+
+        // 3.模板
+        function Html(){
+            // return ([
+            //     <Header key='1'/>,
+            //     <Main key='2'/>
+            // ])
+            return (
+                <React.Fragment>
+                    <Header key='1' />
+                    <Main key='2' />
+                </React.Fragment>
+            );
+        }
+        ReactDOM.render(<Html/>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1.DOM结构 -->
+    <div id="App"></div>
+</body>
+<script>
+    // 4. 公共模块component
+    class component {
+        constructor() {
+            // 4.1 dom元素容器
+            this.elBtn = ""
+        }
+        // 2.5 修改DOM
+        onChanges() {
+            this.setState({
+                isLlKed: !this.state.isLlKed
+            })
+        }
+        // 2.6 设置state状态方法
+        setState(newState = {}) {
+            this.state = newState
+            // 2.7 先缓存我们的旧的DOM
+            var oldEl = this.elBtn;
+            // 2.8 生成一个新的dom
+            var newEl = this._render();
+            // 2.9获取父级元素-根元素【废弃】
+            // var parentNode = oldEl.parentNode;
+            if (this.changeRender) {
+                this.changeRender(oldEl, newEl)
+            }
+        }
+        // 2.1 生成dom元素方法
+        renderDomFromString(strDom) {
+            var div = document.createElement("div");
+            div.innerHTML = strDom;
+            return div;
+        }
+        // 4.7 私有方法生成dom元素,并绑定事件
+        _render() {
+            this.elBtn = this.renderDomFromString(this.render());
+            this.elBtn.addEventListener("click", this.onChanges.bind(this));
+            return this.elBtn;
+        }
+    }
+
+    // 2. 使用class 包装DOM元素       改变背景颜色
+    class FDomBtn1 extends component {
+        // 2.4 初始状态数据
+        constructor(props) {
+            // 4.6 在子级类中必须使用super方法去实例化我们的父级
+            super(props);
+            // 4.7接受外部传入的参数
+            this.props = props;
+            // 2.4 初始状态数据
+            this.state = {
+                isLlKed: false
+            }
+            this.DICT = {
+                DZ: "点赞",
+                QXZ: "取消赞"
+            }
+        }
+
+        render() {
+            return `
+                <button class="like-btn_lch" style="background:${this.props.color}">
+                    <span class="like-text_lch">${this.state.isLlKed ? this.DICT.QXZ : this.DICT.DZ}</span>
+                    <span>👍</span>
+                </button>
+                `
+        }
+    }
+
+    // 2. 使用class 包装DOM元素             改变字体颜色
+    class FDomBtn2 extends component {
+        // 2.4 初始状态数据
+        constructor(props) {
+            // 4.6 在子级类中必须使用super方法去实例化我们的父级
+            super(props);
+            // 4.7接受外部传入的参数
+            this.props = props;
+            // 2.4 初始状态数据
+            this.state = {
+                isLlKed: false
+            }
+        }
+
+        render() {
+            return `
+                <button class="like-btn_lch" style="color:${this.state.isLlKed ? this.props.color.red : this.props.color.blue}">
+                    <span class="like-text_lch">${this.state.isLlKed ? this.props.color.red : this.props.color.blue}</span>
+                    <span>👍</span>
+                </button>
+                `
+        }
+    }
+
+
+
+    // 2. 使用class 包装DOM元素
+    class FDomBtn3 extends component {
+        // 2.4 初始状态数据
+        constructor() {
+            // 4.6 在子级类中必须使用super方法去实例化我们的父级
+            super();
+            // 2.4 初始状态数据
+            this.state = {
+                isLlKed: false
+            }
+            this.DICT = {
+                DZ: "点赞",
+                QXZ: "取消赞"
+            }
+        }
+        render() {
+            return `
+                <button class="like-btn_lch">
+                    <span class="like-text_lch">${this.state.isLlKed ? this.DICT.QXZ : this.DICT.DZ}</span>
+                    <span>👍</span>
+                </button>
+                `
+        }
+    }
+
+
+    // 3.挂载-渲染
+    // 3.1 创建一个挂载方法
+    const mount = (component, Root) => {
+        // 3.3 第一次挂载
+        Root.appendChild(component._render());
+        // 3.4 更新渲染dom
+        component.changeRender = (oldEl, newEl) => {
+            Root.insertBefore(newEl, oldEl);
+            Root.removeChild(oldEl)
+        }
+    }
+    // 3.2 挂载
+    mount(new FDomBtn1({ color: "red" }), document.getElementById("App"))
+    mount(new FDomBtn2({ color: { red: "red", blue: "blue" } }), document.getElementById("App"))
+    mount(new FDomBtn3(), document.getElementById("App"))
+</script>
+
+</html>
+ps: 90

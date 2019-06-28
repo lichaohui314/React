@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>6.27作业</title>
+    <style>
+        #App {
+            text-align: center;
+            background: gray;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.创建根元素 -->
+    <div id="App"></div>
+    <!-- 2.引入react的js文件  顺序不能乱 -->
+    <script src="../6.27初始React/js/react.development.js"></script>
+    <script src="../6.27初始React/js/react-dom.development.js"></script>
+    <script src="../6.27初始React/js/babel.min.js"></script>
+    <!-- script标签一定要加上type属性 -->
+    <script type="text/babel">
+        // 3.创建dom方法
+        var E = React.createElement;
+        // 4.创建头部组件
+        function Header() {
+            return (
+                E('header',{style:{background:'pink',height:'100px'}},'这个是上面')
+            )
+        }
+        // 5.创建主体内容
+        function Main() {
+            return (
+                E('img',{src:'6.27_(1).jpg'})
+            )
+        }
+        // 6.创建尾部组件
+        function Footer(){
+            return (
+                E('footer',{style:{background:'skyblue',height:'100px'}},'这个是下面')
+            )
+        }
+        // 7.创建入口模板
+        function Home(){
+            return (
+                E('div',null,[
+                    <Header key='1'/>,
+                    <Main key='2'/>,
+                    <Footer key='3'/>
+                ])
+            )
+        }
+        // 8.挂载到页面上
+        ReactDOM.render(<Home/>,document.getElementById('App'));
+    </script>
+
+</body>
+
+</html>

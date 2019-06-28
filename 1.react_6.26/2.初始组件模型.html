@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1.DOM结构 -->
+    <div id="App"></div>
+
+</body>
+<script>
+    // 2.使用class 包装DOM元素
+    class FDomBtn {
+        // 2.1生成dom元素方法
+        renderDomFromString(strDom) {
+            var div = document.createElement("div");
+            div.innerHTML = strDom;
+            return div;
+        }
+        render() {
+            // 2.2 调用生成我们的真实DOM元素
+            var elBtn = this.renderDomFromString(
+                `
+                <button class="like-btn_lch">
+                    <span class="like-text_lch">点赞</span>
+                    <span>👍</span>
+                </button>
+                `
+            );
+            // 2.3绑定事件
+            elBtn.addEventListener("click", () => { alert() });
+            return elBtn;
+        }
+    }
+
+    // 3.挂载-渲染
+    var oFdomBtn = new FDomBtn();
+    var oElApp = document.getElementById("App");
+    oElApp.appendChild(oFdomBtn.render());
+
+</script>
+
+</html>
