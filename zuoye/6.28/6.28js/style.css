@@ -1,9 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-.box {
     text-align: center;
 }
 
@@ -47,13 +44,10 @@ h2 {
     width: 33%;
 }
 
-.img1 {
-    margin: 0 8px;
-}
 
-.Reveal,
-.Gsjs {
+.Reveal{
     width: 80%;
+    height: 470px;
     margin: 0 auto;
 }
 
@@ -73,10 +67,18 @@ h2 {
 }
 
 .Gsjs {
-    margin: 100px auto;
+    margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 .p1 {
     font-size: 14px;
     color: #999999;
+}
+.Reveal2{
+    float: left;
+    width: 25%;
+}
+.p{
+    margin: 10px;
 }

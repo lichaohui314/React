@@ -27,20 +27,20 @@
 <script type="text/babel">
     // 1.创建虚拟DOM元素
     var E = React.createElement;
-    // 模板
+    // 6.模板
     function Home(){
         return (
-            E('div',{className:'box'},[
-                <Header1 key='1'/>,
-                <Header2 key='2'/>,
-                <Main key='3'/>,
-                <Reveal key='4'/>,
-                <Gsjs key="5"/>,
-                <Bottom key="6"/>
-            ])
+        <React.Fragment>
+            <Header1 key='1'/>
+            <Header2 key='2'/>
+            <Main key='3'/>
+            <Reveal key="4"/>
+            <Gsjs key="5"/>
+            <Bottom key="6"/>
+        </React.Fragment>
         )
     }
-    // 8.挂载到页面上
+    // 7.挂载到页面上
     ReactDOM.render(<Home/>,document.getElementById('App'));
 </script>
 

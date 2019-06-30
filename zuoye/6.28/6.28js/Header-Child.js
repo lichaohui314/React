@@ -24,6 +24,6 @@ function Child4_2() {
 function Child4() {
     return (E('div', { className: "child4" }, [
         <Child4_1 key="1" />,
-        <Child4_2 key="2" />,
+        <Child4_2 key="2" />
     ]))
 }
