@@ -18,7 +18,8 @@
         const {Component}=React;
         function Footel(props = {}){
             return (
-                React.createElement('li',null,props.text)
+                // *默认克隆添加到这里的props是浅层合并,需要我们处理成深层的
+                React.createElement('li',{...props},props.text)
             )
         }
         class Footer extends Component{
@@ -36,7 +37,16 @@
                             // *显示渲染子元素--React.Children是顶层API
                             React.Children.map(this.props.children, (item,index)=>{
                                 if (index === 1) {
-                                    return item;
+                                    // *React.cloneElement顶级API,用来克隆一个元素
+                                    /* React.cloneElement(el,props,child)
+                                     * - 第一个参数,可以是react元素,也可以是原生的dom元素
+                                     * - 第二个参数,也就是props 
+                                     * - 第三个参数,一般是增加子元素节点的
+                                     */
+                                    const dom = React.cloneElement(item,{key:999,text:"我是在父级里面的新元素",style:{color:"red"},onClick:()=>{alert("QAQ")}})
+                                    console.log(dom);
+                                    
+                                    return dom;
                                 }
                             })
                         }

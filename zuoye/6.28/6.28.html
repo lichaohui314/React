@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        @import url("./6.28js/style.css");
+    </style>
+</head>
+
+<body>
+    <div id='App'></div>
+    <!-- 2.引入react的js文件  顺序不能乱 -->
+    <script src="../../React.js/react.development.js"></script>
+    <script src="../../React.js/react-dom.development.js"></script>
+    <script src="../../React.js/babel.min.js"></script>
+
+    <script src="6.28js/Header.js" type="text/babel"></script>
+    <script src="6.28js/Header-Child.js" type="text/babel"></script>
+    <script src="6.28js/Main.js" type="text/babel"></script>
+    <script src="6.28js/Reveal.js" type="text/babel"></script>
+    <script src="6.28js/Gsjs.js" type="text/babel"></script>
+</body>
+<script type="text/babel">
+    // 1.创建虚拟DOM元素
+    var E = React.createElement;
+    // 模板
+    function Home(){
+        return (
+            E('div',{className:'box'},[
+                <Header1 key='1'/>,
+                <Header2 key='2'/>,
+                <Main key='3'/>,
+                <Reveal key='4'/>,
+                <Gsjs key="5"/>,
+                <Bottom key="6"/>
+            ])
+        )
+    }
+    // 8.挂载到页面上
+    ReactDOM.render(<Home/>,document.getElementById('App'));
+</script>
+
+</html>

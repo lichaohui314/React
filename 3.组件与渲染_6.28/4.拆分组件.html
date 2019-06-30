@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .header {
+            color: #FFFFFF;
+            border: 1px solid red;
+            text-align: center;
+            background: blue;
+        }
+
+        /* 中间样式 */
+        .main {
+            border: 1px solid red;
+            margin-top: 20px;
+            overflow: hidden;
+
+        }
+
+        /* 中间内容区子元素样式 */
+        .leftBox {
+            float: left;
+            background: skyblue;
+            width: 80%;
+            height: 500px;
+        }
+
+        .rightBox {
+            float: left;
+            background: pink;
+            width: 20%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <!-- 引入自定义组件 -->
+    <script src="./4./Header.js" type="text/babel"></script>
+    <script src="./4./Main-Child.js" type="text/babel"></script>
+    <script src="./4./Main.js" type="text/babel"></script>
+    <script src="./4./Footer-Child.js" type="text/babel"></script>
+    <script src="./4./Footer.js" type="text/babel"></script>
+    <script src="./4./Html.js" type="text/babel"></script>
+    <script type="text/babel">
+        ReactDOM.render(
+        // *在react里凡是单标签,都必须加结束符
+        <Html/>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>
