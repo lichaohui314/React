@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../React.js/react.development.js"></script>
+    <script src="../React.js/react-dom.development.js"></script>
+    <script src="../React.js/babel.min.js"></script>
+
+    <script type="text/babel">
+        // child组件
+        function Child(props={}){
+            return (
+                <li {...props}>{props.children || props.txt}</li>
+            )
+        }
+        // home组件-模板
+        function Home(props) {
+            return (
+                <div>
+                    {/* 1.隐式渲染*/}
+                    {/*props.children*/}
+                    {
+                        // 单行注释
+                    }
+                    {/* 2.显示渲染*/}
+                    {/*TODO:*/}
+                    {
+                        React.Children.map(props.children,(item,index)=>{
+                            // 3.对每一个遍历出来的子元素做处理,用克隆
+                            console.log(item);
+                            
+                            let newChild = React.cloneElement(item,
+                            {
+                                txt:`${index}、${item.props.txt}`,
+                                style:{
+                                    color:"red"
+                                },
+                                className:"child"
+                            },<p>{`动态插入的${index}`}</p>)
+                            return newChild
+                        })
+                    }
+                </div>
+            )
+        }
+        ReactDOM.render(<Home>
+            <Child txt="我是一个子元素"/>
+            <Child txt="我是第二个子元素"/>
+            <Child txt="我是第三个子元素"/>
+            </Home>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

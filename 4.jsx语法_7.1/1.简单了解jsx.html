@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .child {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../React.js/react.development.js"></script>
+    <script src="../React.js/react-dom.development.js"></script>
+    <script src="../React.js/babel.min.js"></script>
+
+    <script type="text/babel">
+        // 1.jsx语法
+        // 2.内容组件
+        function Child(props){
+            const handleClick = () => {
+                alert("没有绑定this")
+            }
+            return (
+                <div onClick={handleClick} className={props.className} style={{'color':props.color,fontSize:props.fontSize}}>
+                    {props.content}
+                </div>
+            )
+        }
+        // 3.模板组件
+        function Home(props) {
+            const style={
+                color:"red",
+                fontSize:"60px",
+                className:"child"
+            }
+            return (
+                <main>
+                    <h1>Hello,world</h1>
+                    {props.children}
+                    <Child content="我是在内部直接调用的" {...style}/>
+                </main>
+            )
+        }
+        ReactDOM.render(<Home><Child content="我是内容"/></Home>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

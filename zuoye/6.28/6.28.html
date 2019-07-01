@@ -5,9 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>机智5188</title>
     <style type="text/css">
-        @import url("./6.28js/style.css");
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .header2 {
+            width: 1199px;
+            height: 590px;
+            margin: 0 auto;
+            background-image: url("./6.28img/官网.jpg");
+            padding-top: 3%;
+            position: relative;
+        }
+
+        .child4 {
+            width: 100%;
+            height: 52px;
+            background: red;
+            position: absolute;
+            bottom: 0px;
+            text-align: center;
+        }
+
+        h2 {
+            position: relative;
+            font-weight: 400;
+            font-size: 24px;
+            color: #333333;
+            width: 910px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 90px;
+            padding-top: 20px;
+        }
+
+        .main2 {
+            width: 90%;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .img {
+            width: 33%;
+        }
+
+
+        .Reveal {
+            width: 80%;
+            height: 470px;
+            margin: 0 auto;
+        }
+
+        .reveal4 {
+            float: left;
+        }
+
+        .btn {
+            margin: 0 auto;
+            line-height: 34px;
+            height: 34px;
+            width: 114px;
+            border: 1px solid #DB221D;
+            color: #DB221D;
+            border-radius: 50px;
+            font-size: 14px;
+        }
+
+        .Gsjs {
+            margin: 0 auto;
+            margin-bottom: 100px;
+        }
+
+        .p1 {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .Reveal2 {
+            float: left;
+            width: 25%;
+        }
+
+        .p {
+            margin: 10px;
+        }
     </style>
 </head>
 
@@ -18,26 +103,211 @@
     <script src="../../React.js/react-dom.development.js"></script>
     <script src="../../React.js/babel.min.js"></script>
 
-    <script src="6.28js/Header.js" type="text/babel"></script>
-    <script src="6.28js/Header-Child.js" type="text/babel"></script>
-    <script src="6.28js/Main.js" type="text/babel"></script>
-    <script src="6.28js/Reveal.js" type="text/babel"></script>
-    <script src="6.28js/Gsjs.js" type="text/babel"></script>
 </body>
 <script type="text/babel">
     // 1.创建虚拟DOM元素
     var E = React.createElement;
+
+    // 2.创建一个头部组件 最上边的logo
+    function Header1() {
+        return (
+            E("img", { src: "6.28img/logo.png" })
+        )
+    }
+
+    // 2.1内容区子组件
+    function Child1() {
+        return (
+            E('img', { src: "6.28img/股票自动交易软件1.png" })
+        )
+    }
+    function Child2() {
+        return (
+            E('img', { src: "6.28img/免费下载.png", style: { margin: "0 500px" } })
+        )
+    }
+    function Child3(props) {
+        return (
+            E('p', { style: { marginTop: "10px" } }, props.content)
+        )
+    }
+    // 2.2Child4里面的子组件
+    function Child4_1() {
+        return (E('img', { src: "6.28img/人工智能高胜率交易模型！ 自动提醒！股民必备！.png", style: { position: "absolute", top: "10px", left: "165px" } }))
+    }
+    function Child4_2() {
+        return (E('img', { src: "6.28img/立即下载.gif", style: { position: "absolute", top: "5px", right: "140px" } }))
+    }
+    function Child4() {
+        return (E('div', { className: "child4" }, [
+            <Child4_1 key="1" />,
+            <Child4_2 key="2" />
+        ]))
+    }
+
+    // 2.3内容展示区
+    class Header2 extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+        render() {
+            return E("div", { className: "header2" }, [
+                <Child1 key="1" />,
+                <Child2 key="2" />,
+                <Child3 key="3" content="多家券商权威认证   免注册   免费用" />,
+                <Child4 key="4" />
+            ])
+        }
+    }
+
+    // 3.产品介绍子组件
+    function Main1(props) {
+        return (
+            E('h2', { className: "main1" }, "功能介绍")
+        )
+    }
+    // 3.1产品介绍图
+    function Main2(props) {
+        return (
+            E('div', { className: "main2" }, [
+                <Main2_1 key="1" url="./6.28img/banner_3.jpg" />,
+                <Main2_1 key="2" url="./6.28img/banner_1.jpg" />,
+                <Main2_1 key="3" url="./6.28img/banner_2.jpg" />
+            ])
+        )
+    }
+    // 三张图
+    function Main2_1(props) {
+        return (
+            E('img', { src: props.url, className: "img" })
+        )
+    }
+    // 3.2产品介绍展示
+    class Main extends React.Component {
+        constructor(props) {
+            super(props)
+        }
+        render() {
+            return E("div", { className: "main" }, [
+                <Main1 key="1" />,
+                <Main2 key="2" />
+            ])
+        }
+    }
+
+    // 4.产品展示
+    function Reveal() {
+        return (
+            E("div", { className: "Reveal" }, [
+                <Reveal1 key="1" />,
+                <Reveal2 key="2" />,
+                <Reveal3 key="3" />,
+                <Reveal4 key="4" />,
+                <Reveal5 key="5" />
+            ])
+        )
+    }
+    function Reveal1() {
+        return (
+            E('h2', null, "产品展示")
+        )
+    }
+    // 四次组件使用
+    function Reveal2(props) {
+        return (
+            E("div", { className: "Reveal2" }, [
+                <Reveal2_1 key="1" url="./6.28img/cpzs-pic_03.png" />,
+                <Reveal2_2 key="2" text="高级版" />,
+                <Reveal2_3 key="3" />
+            ])
+        )
+    }
+    function Reveal3(props) {
+        return (
+            E("div", { className: "Reveal2" }, [
+                <Reveal2_1 key="1" url="./6.28img/cpzs-pic_05.png" />,
+                <Reveal2_2 key="2" text="机构版" />,
+                <Reveal2_3 key="3" />
+            ])
+        )
+    }
+    function Reveal4(props) {
+        return (
+            E("div", { className: "Reveal2" }, [
+                <Reveal2_1 key="1" url="./6.28img/cpzs-pic_07.png" />,
+                <Reveal2_2 key="2" text="融耀版" />,
+                <Reveal2_3 key="3" />
+            ])
+        )
+    }
+    function Reveal5(props) {
+        return (
+            E("div", { className: "Reveal2" }, [
+                <Reveal2_1 key="1" url="./6.28img/cpzs-pic_09.png" />,
+                <Reveal2_2 key="2" text="至尊版" />,
+                <Reveal2_3 key="3" />
+            ])
+        )
+    }
+    // 子组件里面的子组件
+    function Reveal2_1(props) {
+        return (
+            E("img", { src: props.url })
+        )
+    }
+    function Reveal2_2(props) {
+        return (
+            E("p", { className: "p" }, props.text)
+        )
+    }
+    function Reveal2_3(props) {
+        return (
+            E("div", { className: "btn" }, "立即下载")
+        )
+    }
+
+    // 5.公司介绍
+    function Gsjs(props) {
+        return (
+            E("div", { className: "Gsjs" }, [
+                <Gsjs1 key="1" />,
+                <Gsjs2 key="2" text="北京机知科技有限公司由从业十年以上资深大咖与资深IT工程师组成，主要研发产品-机智软件，通过5年的不断测试与更新，" />,
+                <Gsjs2 key="3" text="成为一款功能非常强大的程序化软件，倍受广大投资者青睐，一对一售前及售后全天24小时服务。" />,
+                <Gsjs2 key="4" text="公司的经营信条：客户第一、员工第二、股东第三。" />,
+                <Gsjs2 key="5" text="诚信、荣誉、责任、分享、团队、感恩”是每一个“机智人”的立足之本。" />,
+            ])
+        )
+    }
+    // 5.1公司介绍图片
+    function Gsjs1() {
+        return (
+            E("img", { src: "./6.28img/gsjs_03.png", style: { marginBottom: "40px" } })
+        )
+    }
+    // 5.2公司介绍文字
+    function Gsjs2(props) {
+        return (
+            E("p", { className: "p1" }, props.text)
+        )
+    }
+
+    function Bottom() {
+        return (
+            E('img', { src: "./6.28img/bottom.png" })
+        )
+    }
+
     // 6.模板
     function Home(){
         return (
-        <React.Fragment>
-            <Header1 key='1'/>
-            <Header2 key='2'/>
-            <Main key='3'/>
-            <Reveal key="4"/>
-            <Gsjs key="5"/>
-            <Bottom key="6"/>
-        </React.Fragment>
+            <React.Fragment>
+                <Header1 key='1'/>
+                <Header2 key='2'/>
+                <Main key='3'/>
+                <Reveal key="4"/>
+                <Gsjs key="5"/>
+                <Bottom key="6"/>
+            </React.Fragment>
         )
     }
     // 7.挂载到页面上
@@ -45,3 +315,4 @@
 </script>
 
 </html>
+ps:90
