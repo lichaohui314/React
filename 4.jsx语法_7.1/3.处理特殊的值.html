@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../React.js/react.development.js"></script>
+    <script src="../React.js/react-dom.development.js"></script>
+    <script src="../React.js/babel.min.js"></script>
+
+    <script type="text/babel">
+        function Child(){
+            return (
+                <p>子组件</p>
+            )
+        }
+        // home组件-模板
+        function Home(props) {
+            /*
+             * 布尔类型、Null以及 undefined 将会忽略,想使用他需要转成字符串
+             */
+            let handleClick = ()=>{
+                alert("1");
+                
+            }
+            return (
+                <div>
+                    {String(false)}<br/><hr/>
+                    <span id="input" style={{color:'red',border:"1px solid red"}}>555</span>
+                    {0 ? "ok" : "no"}
+                    <div onClick={handleClick}>触发事件</div>
+                </div>
+            )
+        }
+        ReactDOM.render(<Home>
+                <Child/>
+                <Child/>
+            </Home>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

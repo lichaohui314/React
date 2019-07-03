@@ -1,0 +1,61 @@
+/*公共样式*/
+.flex{
+    display: flex;
+}
+.justBetween{
+    justify-content: space-between;
+}
+
+.border{
+    border: 1px solid skyblue;
+}
+.conter{
+    text-align: center;
+}
+li{
+    list-style: none;
+}
+
+/* search */
+.search-box{
+    background: blue;
+}
+.search-input{
+    border: 1px solid #ddd;
+    padding: 6px;
+    margin-right: 5px;
+}
+.search-right{
+    background: green;
+}
+
+/*hot*/
+.hot-box{
+    margin-top: 20px;
+    background: yellowgreen;
+    text-align: center;
+}
+.hot-inner{
+    width: 80%;
+    margin: auto;
+    background: red;
+}
+
+/*main样式*/
+.main-filter{
+    background: #eee;
+    border: 1px solid black;
+}
+
+.main-filter > ul > li{
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+.main-content{
+    background: greenyellow;
+}
+.center{
+    text-align: center;
+}

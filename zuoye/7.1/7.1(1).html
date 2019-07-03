@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #App {
+            background: #9BBB58;
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            border: 3px solid #70893E;
+            text-align: center;
+            color: white;
+            font-size: 25px;
+        }
+
+        .li {
+            width: 80px;
+            height: 50px;
+            background: #C1504C;
+            border: 3px solid #8D3836;
+            list-style: none;
+            float: left;
+            line-height: 50px;
+            margin-left: 20px;
+        }
+
+        .header,
+        .main {
+            width: 80%;
+            background: #4E81BD;
+            border: 3px solid #385C8B;
+            margin: 15px auto 15px;
+            padding: 15px;
+        }
+
+        .main {
+            height: 110px;
+        }
+
+        .header {
+            height: 56px;
+        }
+
+        .picdisplay,
+        .main-proc,
+        .main-list {
+            height: 100px;
+            width: 200px;
+            border: 3px solid #385C8B;
+            background: #4E81BD;
+            float: left;
+        }
+
+        .main-proc,
+        .picdisplay {
+            width: 130px;
+            line-height: 100px;
+            margin-left: 30px;
+        }
+
+        .ul {
+            width: 30%;
+            list-style: none;
+            display: contents;
+        }
+
+        .footer {
+            width: 80%;
+            margin: 0 auto;
+            padding: 15px;
+            border: 3px solid #385C8B;
+            background: #4E81BD;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../../React.js/react.development.js"></script>
+    <script src="../../React.js/react-dom.development.js"></script>
+    <script src="../../React.js/babel.min.js"></script>
+    <div id="App"></div>
+    <script type="text/babel">
+        // 1.创建虚拟DOM元素
+        var E = React.createElement;
+        // 2.导航
+        function Header(props) {
+            return (
+                E("div",{className:props.Name},[
+                    <Header1 key="1" txt="首页"/>,
+                    <Header1 key="2" txt="新闻"/>,
+                    <Header1 key="3" txt="产品"/>,
+                    <Header1 key="4" txt="关于"/>
+                ])
+            )
+        }
+        // 2.1导航子组件
+        function Header1(props){
+            return (
+                E('li',{className:"li"},props.txt)
+            )
+        }
+
+        // 3. 内容主体
+        function Main(props){
+            return (
+                E('div',{className:props.Name},
+                    <Main_Text key="1" Name="main-list">
+                        <Main_List txt="第一个子元素"/>
+                        <Main_List txt="第二个子元素"/>
+                        <Main_List txt="第三个子元素"/>
+                    </Main_Text>,
+                    <Main_Picdisplay key="2" Name="picdisplay"/>,
+                    <Main_Proc key="3" Name="main-proc"/>)
+            )
+        }
+        // 3.1存放文字列表的盒子
+        function Main_Text(props){
+            return (
+                E('div',{className:props.Name},
+                React.Children.map(props.children,(item)=>{
+                    // 3.对每一个遍历出来的子元素做处理,用克隆
+                    let newChild = React.cloneElement(item,
+                        {txt:`${item.props.txt}`},
+                        <li>{`${item.props.txt}`}</li>
+                    )
+                    return newChild
+                })
+                )
+                
+            )
+        }
+        // 3.2 ul文字列表
+        function Main_List(props){
+            return (
+                <ul className="ul">{props.children}</ul>
+            )
+        }
+        // 3.3 图片展示
+        function Main_Picdisplay(props){
+            return (
+                E("div",{className:props.Name},"图片展示")
+            )
+        }
+        // 3.4 公告文字
+        function Main_Proc(props){
+            return (
+                E('div',{className:props.Name},"公告文字")
+            )
+        }
+
+        // 4.尾部
+        function Footer(props){
+            return (
+                E('div',{className:props.Name},[
+                    <Footer_Text key="1" txt="联系方式:  316760006@qq.com"/>,
+                    <Footer_Text key="2" txt="欢迎来撩我"/>
+                ])
+            )
+        }
+        // 4.1尾部文字
+        function Footer_Text(props){
+            return (
+                E('p',{className:props.Name},props.txt)
+            )
+        }
+
+        // 5.模板
+        function Home(props) {
+            return (
+                E("div",null,[
+                    <Header key="1" Name="header"/>,
+                    <Main key="2" Name="main"/>,
+                    <Footer key="3" Name="footer"/>
+                ])
+            )
+        }
+        ReactDOM.render(<Home></Home>,App);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../React.js/react.development.js"></script>
+    <script src="../React.js/react-dom.development.js"></script>
+    <script src="../React.js/babel.min.js"></script>
+    <script src="./components/common/Content.js" type="text/babel"></script>
+    <script src="./components/header/Nav.js" type="text/babel"></script>
+    <script src="./components/search/Search.js" type="text/babel"></script>
+    <script src="./components/hot/Hot.js" type="text/babel"></script>
+    <script src="./components/main/Main.js" type="text/babel"></script>
+    <script src="./components/Module.js" type="text/babel"></script>
+    <script type="text/babel">
+
+        ReactDOM.render(<Module/>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

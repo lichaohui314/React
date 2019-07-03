@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./7.1(2)css/7.1(2).css">
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../../React.js/react.development.js"></script>
+    <script src="../../React.js/react-dom.development.js"></script>
+    <script src="../../React.js/babel.min.js"></script>
+    <script type="text/babel">
+        // 2. 头部logo
+        function Logo(props){
+            return (
+                <img src={`${props.url}`}/>
+            )
+        }
+        // 3. 头部
+        function Header(props){
+            return (
+                <div className={`${props.Name}`}>
+                    <div className="list">
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="首页"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="功能视频"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="软件下载"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="软件定制"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="支付中心"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="招商加盟"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="关于我们"/>
+                        <Header_Nav Name="header-nav" url="./7.1(1).html" txt="行业资讯"/>
+                    </div>
+                </div>
+            )
+        }
+        // 3.1 头部里的导航栏
+        function Header_Nav(props){
+            return (
+                <div className={props.Name}>
+                    <a href={`${props.url}`}><li>{`${props.txt}`}</li></a>
+                </div>
+            )
+        }
+        // 4. 轮播图组件
+        function Banner(props){
+            return (
+                <div className="cantiner">
+                    <ul className="imgs">
+                        <li><img src="./7.1(2)img/1.jpg" alt=""/></li>
+                        <li><img src="./7.1(2)img/2.jpg" alt=""/></li>
+                        <li><img src="./7.1(2)img/3.jpg" alt=""/></li>
+                        <li><img src="./7.1(2)img/4.jpg" alt=""/></li>
+                        <li><img src="./7.1(2)img/5.jpg" alt=""/></li>
+                        <li><img src="./7.1(2)img/6.jpg" alt=""/></li>
+                    </ul>
+                    <span className="left">{`${props.left}`}</span>
+                    <span className="right">{`${props.right}`}</span>
+                    <ul className="point">
+                        <li className="on"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            )
+        }
+        
+        // 5. 注册账号
+        // 5.1 正则验证手机号
+        function checkPhone(){ 
+            var phone = document.getElementById('account').value;
+            console.log(phone);
+            if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))){ 
+                alert("请输入正确的手机号");
+                return; 
+            }else{
+                alert("验证码已发送");
+            }
+        }
+        // 5.2 验证验证码是否正确
+        function immediately(){
+            var verification = document.getElementById("verification").value;
+            var phone = document.getElementById('account').value;
+            if(phone!="" && verification ==""){
+                alert("请输入验证码")
+            }else if(phone!="" && verification.length =="4"){
+                alert("领取成功")
+            }else if(phone ==""){
+                alert("请输入手机号")
+            }else{
+                alert("请输入正确的验证码")
+            }
+        }
+        // 5.3 验证框组件
+        function Verifi(){
+        return(
+            <div className="register">
+                <div className="reghide">
+                    <input id="account" type="text" maxLength="11" placeholder="请输入手机号"/>
+                    <p>	
+                    <input id="verification" type="text" maxLength="6" placeholder="请输入验证码"/>
+                        <button className="get" onClick={checkPhone}>获取验证码</button>
+                    </p>
+                    <button className="receive" onClick={immediately}></button>
+                </div>
+            </div>
+            )
+        }
+
+
+        // 模板-组件
+        function Home(props) {
+            return (
+                <div className={`${props.Name}`}>
+                    <Logo key="1" url="./7.1(2)img/logo.png"/>
+                    <Header key="2" Name="header"/>
+                    <Banner key="3" Name="carousel" left="<" right=">"/>
+                    <Verifi key="4"/>
+                </div>
+            )
+        }
+        ReactDOM.render(<Home Name="Box"/>,document.getElementById("App"))
+
+        
+
+
+        // 4.1轮播图的js
+        var win = document.querySelector(".cantiner");
+        var imgs = document.querySelector(".imgs");
+        var right = document.querySelector(".left");
+        var left = document.querySelector(".right");
+        var point = document.getElementsByClassName("point")[0].children;
+        var index = 0;//图片下标
+        var Wnum = win.offsetWidth;//视口宽度
+        var times;//声明一个时间函数的变量
+        var time;//自动轮播时间方法
+        var Crun = true;//点击事件判断
+        function run() {//轮播
+            var start = imgs.offsetLeft;//开始坐标
+            var end = index * Wnum * (-1);//结束坐标，往右移动所以为负
+            var runD = end - start;//移动距离
+            var px = 30;//移动距离
+            var t = 0;//声明一个参量
+            clearInterval(times);//开始前先清除上次的定时器
+            times = setInterval(function () {
+                t++;
+                if (t >= px) {//判断一张轮播是否结束
+                    clearInterval(times);//一张结束清除定时器
+                    Crun = true;//一张结束点击时间可用
+                }
+                imgs.style.left = runD / px * t + start + 'px';//运动left值
+                if (index >= point.length && t >= px) {//判断是否到最后一张
+                    imgs.style.left = 0;//最后一张与第一张是一样的，立刻切换到第一张去，不会影响效果
+                    index = 0;//下标变为第一张
+                }
+                pointIn();//白点跟随图片改变
+                if (index >= point.length) {//到最后一张时，对应上第一个白点
+                    point[0].className = 'on';
+                } else {
+                    point[index].className = 'on';
+                }
+            }, 20);
+        }
+        function pointIn() {
+            for (var i = 0; i < point.length; i++) {
+                point[i].className = '';//清除所有点的样式
+            }
+        }
+        for (var i = 0; i < point.length; i++) {//遍历所有点
+            (function (idx) {  //将i当参数传入
+                point[idx].onclick = function () {
+                    index = idx;//点击时获取点击到的下标
+                    run();
+                }
+            })(i);
+        }
+        time = setInterval(function () {//定时器
+            index++;
+            run();
+        }, 2000);
+        win.onmouseover = function () {//鼠标移入
+            clearInterval(time)
+        }
+        win.onmouseout = function () {//鼠标离开
+            time = setInterval(function () {
+                index++;
+                run();
+            }, 2000);
+        }
+        left.onclick = function () {//左移动
+            if (Crun) {
+                index++;
+                run();
+            }
+            Crun = false;//一张未切换完，不会切换下一张
+        }
+        right.onclick = function () {//右移动
+            if (Crun) {
+                if (index == 0) {//如果是第一张
+                    index = point.length; //下标切换为最后一张
+                    imgs.style.left = index * Wnum * (-1) + 'px';//left值切换到最后一张
+                }
+                index--;
+                run();
+            }
+            Crun = false;//一张未切换完，不会切换下一张
+        }
+    </script>
+</body>
+
+</html>
+ps:90

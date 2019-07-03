@@ -35,4 +35,4 @@
 ### 顶级API
   1. React.Children: 用来遍历处理this.props.children,显示的渲染,并对我们每一个传入的子元素做处理.语法: React.Children.map(this.props.children,(item.index) = {return item};
   2. React.cloneElement: 克隆一个react元素,并进行二次开发.
-    - 语法: React.cloneElement(child,(props),[子元素/内容])
+    - 语法: React.cloneElement(child,(props),[子元素/内容])   第一个参数是要克隆的元素,第二个是传入的参数,第三个是内容
