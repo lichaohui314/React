@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../../React.js/react.development.js"></script>
+    <script src="../../React.js/react-dom.development.js"></script>
+    <script src="../../React.js/babel.min.js"></script>
+    <script type="text/babel">
+        // 1. state基本用法
+        class Mystate extends React.Component {
+            constructor(){
+                super()
+                // 2. 使用state
+                this.state = {
+                    msg:"我是state,我属于自己的状态,我可以被自己改变"
+                }
+            }
+            handleClick = () => {
+                // 3. 修改state
+                this.setState({
+                    msg:"我被改变了"
+                })
+            }
+            render(){
+                return <div>
+                    {this.state.msg}
+                    <button onClick={this.handleClick}>改变我们的值</button>
+                </div>
+            }
+        }
+        ReactDOM.render(<Mystate/>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

@@ -5,6 +5,7 @@ function Home() {
             <Hot></Hot>
             <Main></Main>
             <Nav></Nav>
+            <Shopcar></Shopcar>
         </div>
     )
 }

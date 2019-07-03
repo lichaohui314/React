@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="App"></div>
+    <script src="../../React.js/react.development.js"></script>
+    <script src="../../React.js/react-dom.development.js"></script>
+    <script src="../../React.js/babel.min.js"></script>
+    <script type="text/babel">
+        class Html extends React.Component{
+            constructor(){
+                super()
+                this.state = {
+                    text:"",
+                    list:[]
+                }
+            }
+            // 改变state里text的值
+            handleChange = ({target}) => {
+                // e就是event对象;target指的是元素自身
+                this.setState({
+                    text:target.value
+                })
+                
+            }
+            // 添加留言信息到列表里
+            handleClick = () => {
+                this.setState({
+                    // [...this.state.list,[this.state.text]]
+                    list: [this.state.text].concat(this.state.list),
+                    text:""
+                })
+            }
+            render(){
+                return <div>
+                    <header>
+                        <input type="text" value={ this.state.text } onChange={ (e) => this.handleChange(e) }/>
+                        <button onClick={this.handleClick}>提交</button>
+                    </header>
+                    <main>
+                        <ul>
+                        {
+                            this.state.list.map((item,index) => {
+                                return <li key={index}>{ `${index + 1}、${item}` }</li>
+                            })
+                        }
+                        </ul>
+                    </main>
+                </div>
+            }
+        }
+        ReactDOM.render(<Html/>,document.getElementById("App"))
+    </script>
+</body>
+
+</html>

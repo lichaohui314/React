@@ -36,3 +36,38 @@
   1. React.Children: 用来遍历处理this.props.children,显示的渲染,并对我们每一个传入的子元素做处理.语法: React.Children.map(this.props.children,(item.index) = {return item};
   2. React.cloneElement: 克隆一个react元素,并进行二次开发.
     - 语法: React.cloneElement(child,(props),[子元素/内容])   第一个参数是要克隆的元素,第二个是传入的参数,第三个是内容
+
+### 
+  - 属性props是父级传入进来的  (是不可以修改的)
+  - state是组件自己的状态数据  (可以修改)
+
+### props:
+  - 属性
+  - porps = properties
+  - 属性是与生俱来、无法自己改变的
+  - 是父组件传给子组件的
+  - 三种用法:
+    1. 键值对形式
+    2. 展开对象写法
+      ```
+        var props = {
+          one:"123",
+          two:"456"
+        }
+        <HelloWorld{...props}>
+      ```
+    3. defaultProps
+
+### State介绍:
+  1. state:
+    - 状态:事物所处的状况
+    - 状态是有事物自行处理,不断变化的
+  2. state用法
+    - 在构造函数里使用this.state = {}
+    - setState:更新组件状态
+      - diff算法
+### state和props对比
+  1. 相似点
+    - 都是纯js对象
+    - 都会触发render更新
+    - 都只有确定性
