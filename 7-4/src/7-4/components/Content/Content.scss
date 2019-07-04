@@ -1,0 +1,43 @@
+/*主体左侧样式*/
+.conleft{
+    background: #8164A3;
+    border: 2px solid #5C4676;
+    margin-top: 20px;
+    width: 40%;
+    height: 370px;
+    padding: 20px;
+}
+.conleft-img{
+    width: 80px;
+    height: 80px;
+    background: #C1504C;
+    border: 2px solid #385C8B;
+    float: left;
+    margin-right: 20px;
+}
+.conleft-list{
+    margin: 10px 0;
+}
+/*主体右侧样式*/
+.conright{
+    width: 40%;
+    height: 370px;
+    padding: 20px;
+    background: #9BBB58;
+    margin-top: 20px;
+    padding: 20px;
+}
+.conright-top{
+    width: 40%;
+    height: 180px;
+    background: #4E81BD;
+    border: 2px solid #385C8B;
+    margin-bottom: 20px;
+}
+.conright-bottom{
+    background: #4E81BD;
+    border: 2px solid #385C8B;
+    width: 80%;
+    height: 40%;
+    margin: auto;
+}
