@@ -31,6 +31,10 @@
             }
             // 提交按钮
             handleClick=()=>{
+                if(this.state.text==""){
+                    alert("请输入内容")
+                    return;
+                }
                 this.setState({
                     list:[this.state.text].concat(this.state.list),
                     text:""
@@ -38,8 +42,9 @@
             }
             // 清空按钮
             handleClean=()=>{
-                console.log("213");
-                
+                this.setState({
+                    list:[]
+                })
             }
             render(){
                 return <div className="bigbox">
@@ -53,12 +58,14 @@
                                 <span>当前留言共:<span className="footer-num">{`${this.state.list.length}`}</span>条</span>
                                 <span className="footer-clean" onClick={this.handleClean}>清空留言板</span>
                             </div>
-                            <div>
-                            {
-                                this.state.list.map((item,index)=>{
-                                    return <p className="footer-txt" key={index}>{item}</p>
-                                })
-                            }
+                            <div className="footer-list">
+                                <div className="footer-list1">
+                                    {
+                                        this.state.list.map((item,index)=>{
+                                            return <p className="footer-txt" key={index}>{`${index+1}、${item}`}</p>
+                                        })
+                                    }
+                                </div>
                             </div>
                         </div>
                     </footer>
@@ -70,3 +77,4 @@
 </body>
 
 </html>
+<!-- ps:85 -->
