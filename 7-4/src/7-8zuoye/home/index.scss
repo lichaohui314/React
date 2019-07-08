@@ -1,0 +1,20 @@
+.nav {
+  width: 20%;
+  background: red;
+  transition: all 1s;
+}
+.hide {
+  width: 0;
+  overflow: hidden;
+  transition: all 1s;
+}
+.main {
+  width: 80%;
+  background: yellowgreen;
+  transition: all 1s;
+}
+
+.show {
+  width: 100%;
+  transition: all 1s;
+}

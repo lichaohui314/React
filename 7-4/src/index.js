@@ -18,6 +18,8 @@ import './asset/style/index.scss';
 // 7-8 课后练习
 import Home from "./7-8zuoye/component/Home"
 
+// import Home from "./7-8zuoye/home"
+
 import * as serviceWorker from './serviceWorker';
 // import Html from "./compon/ents/liuyanban/html"
 

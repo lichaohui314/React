@@ -1,53 +1,60 @@
-import React, { Component } from "react"
+import React, { Component } from 'react'
 import { debounce } from "lodash"
-import { getBaidu } from "../../api/request"
+import { getBaidu } from '../../api/request';
+import "./style.scss"
 export default class Home extends Component {
     constructor() {
         super()
         this.state = {
-            text: "",
-            list: []
+            msg: "",
+            list: [],
+            backgroundColor: '#87CEEB'
         }
-        this.scroll = debounce(function (e) {
-            console.log(e)
-        }, 1000)
-        this.chage = debounce(function (e) {
-            getBaidu({ wd: e.target.value }).then((data) => {
-                console.log("向后台发送请求")
+        this.chage = debounce((e) => {
+            getBaidu({ wd: e }).then((data) => {
+                console.log(data)
                 this.setState({
                     list: data.s
                 })
             })
-        }, 1000)
+            console.log("节流")
+        }, 500)
+        this.scroll = debounce((e) => {
+            console.log("防抖")
+        }, 500)
     }
-    handleScroll = debounce((e) => {
-        e.persist()
-        this.scroll(e)
-    }, 1000)
-
-    handleChange = (e) => {
-
+    handleWheel = (event) => {
+        var newColor = (parseInt(this.state.backgroundColor.substr(1), 16) + event.deltaY * 996).toString(16);
         this.setState({
-            text: e.target.value
+            backgroundColor: '#' + newColor
         })
-        e.persist()
-        this.chage(e)
+        this.scroll()
+    }
+    handleChange = (e) => {
+        this.setState({
+            msg: e.target.value,
+        })
+    }
+    handleClick = () => {
+        let ev = this.state.msg;
+        this.chage(ev)
+    }
+    handleDel = (index) => {
+        this.state.list.splice(index, 1)
+        this.setState({
+            list: this.state.list
+        })
     }
     render() {
-
-        return <div style={{
-            height: "500px",
-            overflowY: "scroll",
-            border: "1px solid red"
-        }
-        }
-            onScroll={(event) => { this.handleScroll(event) }}>
-            <div style={{ height: "1500px" }}>
-                <input type="text" value={this.state.text} onChange={(event) => this.handleChange(event)} />
-                <ul>
+        return <div className="box" onWheel={this.handleWheel}>
+            <div>
+                <input type="text" value={this.state.msg} onChange={this.handleChange} />
+                <div className="btn" onClick={this.handleClick}>提交</div>
+                <div style={{ overflow: "hidden" }}></div>
+                <ul style={{ background: this.state.backgroundColor }}>
                     {
                         this.state.list.map((item, index) => {
-                            return <li key={index}>{item}</li>
+                            return <li key={index}><p>{`${index + 1}、${item}`}</p><p className="del" onClick={() => this.handleDel(index)}>删除</p></li>
                         })
                     }
                 </ul>

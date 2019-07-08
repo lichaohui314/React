@@ -1,0 +1,48 @@
+.box{
+    height: 400px;
+    width: 500px;
+    margin: auto;
+    border: 2px solid blue;
+    background: skyblue;
+    & div{
+        width: 400px;
+        margin: auto;
+        & input{
+            width: 75%;
+            height: 30px;
+            float: left;
+            background: yellowgreen;
+        }
+        & .btn{
+            float: right;
+            width: 20%;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: greenyellow;
+            border: 2px solid green;
+            border-radius: 5px;
+        }
+        & ul{
+            margin-top: 10px;
+            border: 2px solid blue;
+            height: 200px;
+            overflow-y: scroll;
+            & li{
+                display: flex;
+                justify-content: space-between;
+                & .del{
+                    margin-right: 10px;
+                    width:50px;
+                    background: red;
+                    text-align: center;
+                    border: 2px solid #953634;
+                }
+            }
+        }
+    }
+    
+}
+li{
+    margin-top: 10px;
+}

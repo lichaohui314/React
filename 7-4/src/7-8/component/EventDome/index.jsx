@@ -5,7 +5,7 @@ export default class EventDome extends Component {
     constructor() {
         super()
         // 初始化一个方法debounce 防抖函数
-        this.chage = debounce(function (e) {
+        this.scroll = debounce(function (e) {
             console.log(e)
         },2000)
     }
@@ -16,7 +16,7 @@ export default class EventDome extends Component {
 
     handleScroll = debounce((e) => {
         e.persist()
-        this.chage(e)
+        this.scroll(e)
     })
     render() {
         return <div style={{
