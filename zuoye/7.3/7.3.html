@@ -14,64 +14,10 @@
     <script src="../../React.js/react.development.js"></script>
     <script src="../../React.js/react-dom.development.js"></script>
     <script src="../../React.js/babel.min.js"></script>
+    <script src="./components/Header.js" type="text/babel"></script>
+    <script src="./components/Footer.js" type="text/babel"></script>
+    <script src="./components/Home.js" type="text/babel"></script>
     <script type="text/babel">
-        class Home extends React.Component {
-            constructor(){
-                super()
-                this.state = {
-                    text:"",
-                    list:[]
-                }
-            }
-            // 改变input里的值
-            handleChange = ({target}) => {
-                this.setState({
-                    text:target.value
-                })
-            }
-            // 提交按钮
-            handleClick=()=>{
-                if(this.state.text==""){
-                    alert("请输入内容")
-                    return;
-                }
-                this.setState({
-                    list:[this.state.text].concat(this.state.list),
-                    text:""
-                })
-            }
-            // 清空按钮
-            handleClean=()=>{
-                this.setState({
-                    list:[]
-                })
-            }
-            render(){
-                return <div className="bigbox">
-                    <header className="header">
-                        <input className="inp" type="text" value={this.state.text} onChange={(e)=>this.handleChange(e)}/>
-                        <div className="btn"  onClick={this.handleClick}>提交</div>
-                    </header>
-                    <footer className="footer">
-                        <div className="footer-box">
-                            <div className="footer-txt" style={{height:"25px"}}>
-                                <span>当前留言共:<span className="footer-num">{`${this.state.list.length}`}</span>条</span>
-                                <span className="footer-clean" onClick={this.handleClean}>清空留言板</span>
-                            </div>
-                            <div className="footer-list">
-                                <div className="footer-list1">
-                                    {
-                                        this.state.list.map((item,index)=>{
-                                            return <p className="footer-txt" key={index}>{`${index+1}、${item}`}</p>
-                                        })
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            }
-        }
         ReactDOM.render(<Home/>,document.getElementById("App"))
     </script>
 </body>

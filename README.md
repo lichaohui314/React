@@ -103,3 +103,62 @@ React.Children.map(this.props.children,(item.index) = {return item};
     - 都是纯js对象
     - 都会触发render更新
     - 都只有确定性
+
+
+
+
+
+
+
+### create react 脚手架
+  - 安装: 
+    1. 如果设置了npm指向淘宝镜像,则不需要安装了
+      - npm config set registry https://registry.npm.taobao.org
+    2. 查看设置是否正确
+      - npm config get registry
+    3. 全局安装脚手架
+      - npm i -g creact-react-app
+    4. 查看版本
+      - creact-react-app -V
+    5. 创建项目[不要在C盘里创建,因为C盘是系统盘,他有权限保护,容易出问题,如果只有C盘,吧项目建立在'文档'文件夹里]
+      - (1) create-react-app myreact(你的项目名字)
+      - (2) 如果创建项目时报错,说明网不好,或者是使用了yarn,卸载yarn,或者查看一下node.js软件是不是被误删了文件,卸载node.js重新安装
+    6. 运行项目
+      - npm run start
+        - (1) 如果报错是webpack版本号不对等
+        - (2) 解决办法:运行npm run eject
+        - (3) 最后再运行启动即可
+      - 在运行 npm run eject 时报错
+        - (1) 一般是说你的git没有提交
+        - (2) 是因为项目安装的时候放在了git本地仓库li
+        - (3) 解决办法有两个: 一个就是删除掉本地的git文件夹
+        - (4) 另一个就是提交一下git
+
+  - 报错解决
+    如果你在安装的时候报错失败,使用如下方式:
+    - win键 + x   点开window prosell(管理员) === cmd
+    - 如果还不成功,去看一下你的node.js软件是否安装在了磁盘根目录
+    - 如果是,卸载node.js重新安装,默认就安装在c盘
+    - 我们的项目不要在你的C盘,C盘是系统盘,授权限保护,项目放在其他盘里
+  
+### 事件的绑定
+  1. 在无状态组件中使用事件有两种
+    - 1.1直接在函数中声明事件
+    - 1.2调用父组件传入事件
+
+  2. 
+
+### 事件对象
+
+
+
+### 运行命令
+  - npm start
+
+### 脚手架
+  - build前配置二级目录在packge.json添加: "homepage"
+  - 新版脚手架无法在js中使用public.js把new ModukeScopePlugin注释掉即可
+  - 使用
+
+### 安装sass
+  - npm i node-sass sass-loader -D
