@@ -17,7 +17,7 @@ export default class Home extends Component {
                     list: data.s
                 })
             })
-            console.log("节流")
+            console.log("防抖")
         }, 500)
         this.scroll = debounce((e) => {
             console.log("防抖")

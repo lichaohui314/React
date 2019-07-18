@@ -148,7 +148,7 @@ React.Children.map(this.props.children,(item.index) = {return item};
 
   2. 
 
-### 事件对象
+
 
 
 
@@ -162,3 +162,8 @@ React.Children.map(this.props.children,(item.index) = {return item};
 
 ### 安装sass
   - npm i node-sass sass-loader -D
+
+
+
+### 使用rimraf 删除node-modul包
+  - npm i -g rimraf

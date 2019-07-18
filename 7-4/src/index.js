@@ -16,9 +16,16 @@ import './asset/style/index.scss';
 // import Home from "./7-8/component/Home/Home"
 
 // 7-8 课后练习
-import Home from "./7-8zuoye/component/Home"
+// import Home from "./7-8zuoye/component/Home"
 
-// import Home from "./7-8zuoye/home"
+// 7-9 
+// import Home from "./7-9/component/Home/Home"
+
+// 7-9课后练习
+import Home from "./7-9zuoye/component/Home/Home"
+
+// 7-9宋宇
+// import Html from "./7-9sy/components/html"
 
 import * as serviceWorker from './serviceWorker';
 // import Html from "./compon/ents/liuyanban/html"
